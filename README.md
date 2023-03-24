@@ -9,7 +9,7 @@ Install the required packages
 ```console
 pip install -r requirements.txt
 ```
-Update `config.d.yml`, make sure all the values entered are correct and valid
+Update `config.yml`, make sure all the values entered are correct and valid
 ```yaml
 webhook_url: 'https://discord.com/api/webhooks/...' # discord webhook url
 cron_expr: '0 _ * * *' # cron expression, example: '0 10 * * *'  runs at 10am every day, learn more at crontab.guru
