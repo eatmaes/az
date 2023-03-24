@@ -1,6 +1,5 @@
 import os
 import re
-import shutil
 import sys
 import time
 import random
@@ -161,9 +160,6 @@ class Amazon:
 
 
 def main():
-    if os.path.exists('config.d.yml') and not os.path.exists('config.yml'):
-        shutil.move('config.d.yml', 'config.yml')
-
     with open("config.yml", "r") as f:
         config = yaml.safe_load(f)
     try:
