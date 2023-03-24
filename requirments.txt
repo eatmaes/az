@@ -1,0 +1,7 @@
+pyyaml
+requests
+pickledb
+colorthief
+cron-validator
+BeautifulSoup4
+discord_webhook

@@ -1,0 +1,9 @@
+webhook_url:
+cron_expr: ''
+# 1: Only Changes , 2: Update Everything
+log_level:
+initial_update: true
+products:
+  -
+  -
+cron_interval: 30
