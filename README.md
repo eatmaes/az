@@ -23,11 +23,11 @@ cron_interval: 30 # check cron task every 30s
 ```
 
 ## Usage
-Now just run the scraper 
+Now just run the scraper using
 ```console
 python scrape.py
 ```
-override `initial_update` using `-o` flag
+override `initial_update` using the `-o` flag
 ```console
 python scrape.py -o
 ```
