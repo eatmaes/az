@@ -78,7 +78,7 @@ class Product:
         embed.set_title(prod["title"])
         embed.set_url(self.url)
         embed.set_thumbnail(url = self.thumbnail)
-        embed.set_description(content + f' - <t:{int(latest[2])}:R>' + f"\n {self.format_availability(latest[1])}")
+        embed.set_description(content + f' - <t:{int(latest[2])}:R> \n {self.format_availability(latest[1])}')
         embed.set_color(prod['color'])
         embed.set_timestamp(int(latest[2]))
         wh.add_embed(embed)
