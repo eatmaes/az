@@ -139,7 +139,7 @@ class Amazon:
         self.scheduler = CronScheduler(cron_expr)
         self.cron_interval = cron_interval
 
-    def register(self, url):  # noqa
+    def register(self, url):
         product = Product(url = url.split('?')[0], db = self.db, log_level = self.log_level, webhook_url = self.webhook_url)
         self.products.append(product)
 
