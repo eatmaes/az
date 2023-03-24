@@ -162,6 +162,7 @@ class Amazon:
 def main():
     with open("config.yml", "r") as f:
         config = yaml.safe_load(f)
+        
     try:
         scraper = Amazon(**{k: v for k, v in config.items() if k in ["cron_expr", "cron_interval", "webhook_url", "log_level"]})
     except AssertionError:
