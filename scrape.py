@@ -1,5 +1,6 @@
 import os
 import re
+import shutil
 import sys
 import time
 import random
@@ -77,7 +78,7 @@ class Product:
         embed.set_title(prod["title"])
         embed.set_url(self.url)
         embed.set_thumbnail(url = self.thumbnail)
-        embed.set_description(content + f' - <t:{int(latest[2])}:R> \n {self.format_availability(latest[1])}')
+        embed.set_description(content + f' - <t:{int(latest[2])}:R> "\n {self.format_availability(latest[1])}')
         embed.set_color(prod['color'])
         embed.set_timestamp(int(latest[2]))
         wh.add_embed(embed)
@@ -139,7 +140,7 @@ class Amazon:
         self.cron_interval = cron_interval
 
     def register(self, url):
-        product = Product(url = url.split('?')[0], db = self.db, log_level = self.log_level, webhook_url = self.webhook_url)
+        product = Product(url = url, db = self.db, log_level = self.log_level, webhook_url = self.webhook_url)  # .split('?')[0]
         self.products.append(product)
 
     def register_many(self, urls):
@@ -147,6 +148,8 @@ class Amazon:
             url and self.register(url)
 
     def update_all(self):
+        if not self.products:
+            raise Exception("No products to update....")
         for product in self.products:
             product.update()
 
@@ -160,9 +163,11 @@ class Amazon:
 
 
 def main():
+    if os.path.exists('config.d.yml') and not os.path.exists('config.yml'):
+        shutil.move('config.d.yml', 'config.yml')
+
     with open("config.yml", "r") as f:
         config = yaml.safe_load(f)
-        
     try:
         scraper = Amazon(**{k: v for k, v in config.items() if k in ["cron_expr", "cron_interval", "webhook_url", "log_level"]})
     except AssertionError:
