@@ -140,7 +140,7 @@ class Amazon:
         self.cron_interval = cron_interval
 
     def register(self, url):
-        product = Product(url = url, db = self.db, log_level = self.log_level, webhook_url = self.webhook_url)  # .split('?')[0]
+        product = Product(url = url, db = self.db, log_level = self.log_level, webhook_url = self.webhook_url)
         self.products.append(product)
 
     def register_many(self, urls):
@@ -163,9 +163,6 @@ class Amazon:
 
 
 def main():
-    if os.path.exists('config.d.yml') and not os.path.exists('config.yml'):
-        shutil.move('config.d.yml', 'config.yml')
-
     with open("config.yml", "r") as f:
         config = yaml.safe_load(f)
     try:
