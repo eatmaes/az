@@ -1,5 +1,5 @@
 # az
-A basic amazon scraper
+A simple amazon scraper
 
 ## Requirements
 * python \>=3.9
